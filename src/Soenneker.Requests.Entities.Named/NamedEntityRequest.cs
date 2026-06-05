@@ -12,6 +12,9 @@ namespace Soenneker.Requests.Entities.Named;
 [PublicOpenApiObject]
 public record NamedEntityRequest : EntityRequest
 {
+    /// <summary>
+    /// The display name for the entity.
+    /// </summary>
     [Required, StringLength(DataConstants.Name)]
     [JsonPropertyName("name")]
     public string Name { get; set; } = null!;
