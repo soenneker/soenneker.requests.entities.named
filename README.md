@@ -3,11 +3,22 @@
 [![](https://img.shields.io/nuget/dt/soenneker.requests.entities.named.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.requests.entities.named/)
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.requests.entities.named/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.requests.entities.named/actions/workflows/codeql.yml)
 
-# ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Requests.Entities.Named
-### A request model that includes a required, length-limited Name property for named entities.
+# Soenneker.Requests.Entities.Named
 
-## Installation
+Defines the identifier and required human-readable name shared by create-or-update requests for named resources.
 
-```
+## Install
+
+```bash
 dotnet add package Soenneker.Requests.Entities.Named
 ```
+
+## What you get
+
+- `NamedEntityRequest` — Defines the identifier and required human-readable name shared by create-or-update requests for named resources.
+
+## API at a glance
+
+| API | What it does | Result / important behavior |
+| --- | --- | --- |
+| `NamedEntityRequest.Name` | Human-readable display name for the resource, subject to the API's maximum name length. | Human-readable display name for the resource, subject to the API's maximum name length. |
