@@ -5,20 +5,40 @@
 
 # Soenneker.Requests.Entities.Named
 
-Defines the identifier and required human-readable name shared by create-or-update requests for named resources.
+A reusable create-or-update request containing an optional entity ID and a required display name.
 
-## Install
+## Installation
 
 ```bash
 dotnet add package Soenneker.Requests.Entities.Named
 ```
 
-## What you get
+## Usage
 
-- `NamedEntityRequest` — Defines the identifier and required human-readable name shared by create-or-update requests for named resources.
+Use `NamedEntityRequest` directly when an endpoint only needs an ID and name:
 
-## API at a glance
+```csharp
+using Soenneker.Requests.Entities.Named;
 
-| API | What it does | Result / important behavior |
-| --- | --- | --- |
-| `NamedEntityRequest.Name` | Human-readable display name for the resource, subject to the API's maximum name length. | Human-readable display name for the resource, subject to the API's maximum name length. |
+var create = new NamedEntityRequest
+{
+    Name = "Production"
+};
+
+var update = new NamedEntityRequest
+{
+    Id = "75f11404-9c6f-4b33-b16c-d3ffea59f8f4",
+    Name = "Production US"
+};
+```
+
+It can also be used as the base for a more specific API contract:
+
+```csharp
+public record SaveEnvironmentRequest : NamedEntityRequest
+{
+    public string? Region { get; init; }
+}
+```
+
+The JSON properties are `id` and `name`. `Id` is optional and, when present, must be a GUID. `Name` is required and length-limited by the shared Soenneker data constant. Run the request through ASP.NET Core model validation or another data-annotation validator; constructing or deserializing the record does not validate it automatically.
