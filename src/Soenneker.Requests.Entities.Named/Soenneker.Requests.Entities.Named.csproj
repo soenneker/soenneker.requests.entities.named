@@ -46,6 +46,6 @@
 
     <ItemGroup>
       <PackageReference Include="Soenneker.Constants.Data" Version="11.0.669" />
-      <PackageReference Include="Soenneker.Requests.Entity" Version="11.0.313" />
+      <PackageReference Include="Soenneker.Requests.Entity" Version="11.0.315" />
     </ItemGroup>
 </Project>
